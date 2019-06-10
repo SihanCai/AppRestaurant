@@ -9,7 +9,7 @@
 
 <script>
   import VHeader from 'components/v-header/v-header'
-  import {getSeller} from 'api'
+  import { getSeller } from 'api'
 
   export default {
     name: 'app',
@@ -20,10 +20,15 @@
         }
       }
     },
-    created() {
-       getSeller().then((seller) => {
-         this.seller = seller
+    methods: {
+        _getSeller() {
+              getSeller().then((seller) => {
+              this.seller = seller
        })
+        }
+    },
+    created() {
+        this._getSeller()
     },
     components: {
       VHeader
